@@ -14,7 +14,12 @@ public class User {
     private String surname;
     private String email;
     private String cellphone;
-    private String accountNumber;
+
+    @OneToOne
+    private FixedAccount fixedAccount;
+
+    @OneToOne
+    private SavingsAccount savingsAccount;
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -28,21 +33,26 @@ public class User {
 
     public User() {}
 
-    public User(String firstName, String surname, String email, String cellphone, String accountNumber, String password) {
+    public User(String firstName, String surname, String email, String cellphone,
+                FixedAccount fixedAccount, SavingsAccount savingsAccount, String password) {
         this.firstName = firstName;
         this.surname = surname;
         this.email = email;
         this.cellphone = cellphone;
-        this.accountNumber = accountNumber;
+        this.fixedAccount = fixedAccount;
+        this.savingsAccount = savingsAccount;
         this.password = password;
     }
 
-    public User(String firstName, String surname, String email, String cellphone, String accountNumber, String password, Collection<Role> roles) {
+    public User(String firstName, String surname, String email, String cellphone,
+                FixedAccount fixedAccount, SavingsAccount savingsAccount, String password,
+                Collection<Role> roles) {
         this.firstName = firstName;
         this.surname = surname;
         this.email = email;
         this.cellphone = cellphone;
-        this.accountNumber = accountNumber;
+        this.fixedAccount = fixedAccount;
+        this.savingsAccount = savingsAccount;
         this.password = password;
         this.roles = roles;
     }
@@ -87,12 +97,20 @@ public class User {
         this.cellphone = cellphone;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
+    public FixedAccount getFixedAccount() {
+        return fixedAccount;
     }
 
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setFixedAccount(FixedAccount fixedAccount) {
+        this.fixedAccount = fixedAccount;
+    }
+
+    public SavingsAccount getSavingsAccount() {
+        return savingsAccount;
+    }
+
+    public void setSavingsAccount(SavingsAccount savingsAccount) {
+        this.savingsAccount = savingsAccount;
     }
 
     public String getPassword() {
@@ -116,9 +134,12 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", lastName='" + surname + '\'' +
+                ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + "*********" + '\'' +
+                ", cellphone='" + cellphone + '\'' +
+                ", fixedAccount=" + fixedAccount +
+                ", savingsAccount=" + savingsAccount +
+                ", password='" + password + '\'' +
                 ", roles=" + roles +
                 '}';
     }

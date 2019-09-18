@@ -81,11 +81,19 @@
                             error</p>
                     </div>
                     <div class="form-group"
-                         th:classappend="${#fields.hasErrors('accountNumber')}? 'has-error':''">
-                        <label for="accountNumber" class="control-label">Account Number</label>
-                        <input id="accountNumber" class="form-control" th:field="*{accountNumber}" />
+                         th:classappend="${#fields.hasErrors('fixedAccount')}? 'has-error':''">
+                        <label for="fixedAccount" class="control-label">Fixed Account</label>
+                        <input id="fixedAccount" class="form-control" th:field="*{fixedAccount}" />
                         <p class="error-message"
-                           th:each="error : ${#fields.errors('accountNumber')}" th:text="${error}">Validation
+                           th:each="error : ${#fields.errors('fixedAccount')}" th:text="${error}">Validation
+                            error</p>
+                    </div>
+                    <div class="form-group"
+                         th:classappend="${#fields.hasErrors('savingsAccount')}? 'has-error':''">
+                        <label for="savingsAccount" class="control-label">Savings Account</label>
+                        <input id="savingsAccount" class="form-control" th:field="*{savingsAccount}" />
+                        <p class="error-message"
+                           th:each="error : ${#fields.errors('savingsAccount')}" th:text="${error}">Validation
                             error</p>
                     </div>
                     <div class="form-group"

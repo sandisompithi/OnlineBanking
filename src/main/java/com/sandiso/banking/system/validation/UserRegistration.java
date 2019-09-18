@@ -1,7 +1,10 @@
 package com.sandiso.banking.system.validation;
 
 import com.sandiso.banking.system.contstraint.FieldMatch;
+import com.sandiso.banking.system.model.FixedAccount;
+import com.sandiso.banking.system.model.SavingsAccount;
 
+import javax.persistence.OneToOne;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -41,8 +44,8 @@ public class UserRegistration {
     private String confirmEmail;
     @NotEmpty
     private String cellphone;
-    @NotEmpty
-    private String accountNumber;
+    private String fixedAccount;
+    private String savingsAccount;
 
     @AssertTrue
     private Boolean terms;
@@ -103,12 +106,20 @@ public class UserRegistration {
         this.cellphone = cellphone;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
+    public String getFixedAccount() {
+        return fixedAccount;
     }
 
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setFixedAccount(String fixedAccount) {
+        this.fixedAccount = fixedAccount;
+    }
+
+    public String getSavingsAccount() {
+        return savingsAccount;
+    }
+
+    public void setSavingsAccount(String savingsAccount) {
+        this.savingsAccount = savingsAccount;
     }
 
     public Boolean getTerms() {

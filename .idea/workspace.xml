@@ -11,9 +11,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -43,8 +43,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.sandiso.banking.system.repository" />
       <recent name="com.sandiso.banking.system.model" />
+      <recent name="com.sandiso.banking.system.repository" />
     </key>
   </component>
   <component name="RunDashboard">
