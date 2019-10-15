@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="navbar navbar-nav">
+      <li class="badge-info">
+        <a>Email : {{ currentUser.email }}</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <button
+          class="glyphicon glyphicon-log-in btn btn-danger"
+          (click)="logOut()"
+        >
+          Logout
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <header class="jumbotron my-4">
+    <h1 class="display-3">
+      <strong>{{ currentUser.firstname }}</strong
+      >, Welcome to Online Banking
+    </h1>
+    <p class="lead">welcome</p>
+    <div class="row"></div>
+  </header>
+</div>

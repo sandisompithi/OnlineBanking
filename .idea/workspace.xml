@@ -37,11 +37,18 @@
     <property name="Repository.Attach.Annotations" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/model" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\spring_boot\OnlineBanking\src\main\java\com\sandiso\banking\system\model" />
+      <recent name="C:\spring_boot\OnlineBanking\src\main\java\com\sandiso\banking\system\config" />
+      <recent name="C:\spring_boot\OnlineBanking\src\main\java\com\sandiso\banking\system\service" />
+      <recent name="C:\spring_boot\OnlineBanking\src\main\java\com\sandiso\banking\system\repository" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.sandiso.banking.system.model" />
       <recent name="com.sandiso.banking.system.repository" />

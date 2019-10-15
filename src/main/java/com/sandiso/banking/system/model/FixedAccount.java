@@ -13,6 +13,7 @@ public class FixedAccount {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int accountNumber;
+    private String accoutType;
     private BigDecimal accountBalance;
 
     @OneToMany(mappedBy = "fixedAccount", cascade = CascadeType.ALL,
@@ -42,6 +43,14 @@ public class FixedAccount {
 
     public void setAccountBalance(BigDecimal accountBalance) {
         this.accountBalance = accountBalance;
+    }
+
+    public String getAccoutType() {
+        return accoutType;
+    }
+
+    public void setAccoutType(String accoutType) {
+        this.accoutType = accoutType;
     }
 
     public List<FixedTransaction> getFixedTransactionList() {
