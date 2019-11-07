@@ -14,6 +14,12 @@ import { HttpModule } from "@angular/http";
 import { FormsModule } from "@angular/forms";
 import { AccountService } from "./services/account.service";
 import { AuthService } from "./services/auth.service";
+import { FixedAccountComponent } from "./components/fixed-account/fixed-account.component";
+import { SavingsAccountComponent } from "./components/savings-account/savings-account.component";
+import { DepositComponent } from "./components/deposit/deposit.component";
+import { WithdrawComponent } from "./components/withdraw/withdraw.component";
+import { RecipientComponent } from "./components/recipient/recipient.component";
+import { from } from "rxjs";
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +27,12 @@ import { AuthService } from "./services/auth.service";
     LogoutComponent,
     RegisterComponent,
     UseraccountComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FixedAccountComponent,
+    SavingsAccountComponent,
+    DepositComponent,
+    WithdrawComponent,
+    RecipientComponent
   ],
   imports: [BrowserModule, HttpModule, HttpClientModule, FormsModule, routing],
   providers: [AccountService, AuthService, UrlPermission],
