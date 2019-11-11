@@ -78,7 +78,7 @@ public class AccountServiceImpl implements AccountService {
     public void withdraw(String accountType, double amount, Principal principal) {
         User user = userService.findByEmail(principal.getName());
 
-        if (accountType.equalsIgnoreCase("Primary")){
+        if (accountType.equalsIgnoreCase("Fixed")){
             FixedAccount fixedAccount = user.getFixedAccount();
             fixedAccount.setAccountBalance(fixedAccount.getAccountBalance().subtract(new BigDecimal(amount)));
             fixedAccountRepository.save(fixedAccount);

@@ -9,8 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -18,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api")
+@PreAuthorize("hasRole('USER')")
 public class AccountController {
 
     public static final Logger logger = LoggerFactory.getLogger(AccountController.class);
@@ -52,8 +52,118 @@ public class AccountController {
     }
 
     @CrossOrigin
+    @RequestMapping(value = "/user/all", method = RequestMethod.GET)
+    public List<User> userList() {
+        return userService.findUserList();
+    }
+
+    @CrossOrigin
     @RequestMapping(value = "/fixedAccount", method = RequestMethod.GET)
-    public List<FixedTransaction> fixedAccount(String username) {
+    public ResponseEntity<FixedAccount> getFixedAccountById(@RequestBody Principal principal) {
+        User user = userService.findByEmail(principal.getName());
+        FixedAccount fixedAccount = user.getFixedAccount();
+
+        return ResponseEntity.ok().body(fixedAccount);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/savingsAccount", method = RequestMethod.GET)
+    public ResponseEntity<SavingsAccount> getSavingsAccountById(@RequestBody Principal principal) {
+        User user = userService.findByEmail(principal.getName());
+        SavingsAccount savingsAccount = user.getSavingsAccount();
+
+        return ResponseEntity.ok().body(savingsAccount);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/fixedTransaction", method = RequestMethod.GET)
+    public List<FixedTransaction> getFixedTransactionList(@RequestParam("username") String username) {
         return transactionService.findFixedTransactionList(username);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/savingsTransaction", method = RequestMethod.GET)
+    public List<SavingsTransaction> getSavingsTransactionList(@RequestParam("username") String username) {
+        return transactionService.findSavingsTransactionList(username);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/deposit", method = RequestMethod.POST)
+    public ResponseEntity<?> depositPost(@RequestParam("amount") String amount,
+                                         @RequestParam("accountType") String accountType, Principal principal) {
+
+        accountService.deposit(accountType, Double.parseDouble(amount), principal);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/withdraw", method = RequestMethod.POST)
+    public ResponseEntity<?> withdrawPost(@RequestParam("amount") String amount,
+                                         @RequestParam("accountType") String accountType, Principal principal) {
+
+        accountService.withdraw(accountType, Double.parseDouble(amount), principal);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @CrossOrigin
+    @RequestMapping("/user/{username}/enable")
+    public void enableUser(@PathVariable("username") String username) {
+        userService.enableUser(username);
+    }
+
+    @CrossOrigin
+    @RequestMapping("/user/{username}/disable")
+    public void disableUser(@PathVariable("username") String username) {
+        userService.disableUser(username);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/betweenAccounts", method = RequestMethod.POST)
+    public ResponseEntity<?> betweenAccountsPost(@RequestParam("transferFrom") String tranferFrom,
+                                                 @RequestParam("transferTo") String transferTo,
+                                                 @RequestParam("amount") String amount, Principal principal) throws Exception {
+        User user = userService.findByEmail(principal.getName());
+        FixedAccount fixedAccount = user.getFixedAccount();
+        SavingsAccount savingsAccount = user.getSavingsAccount();
+
+        transactionService.betweenAccountsTransfer(tranferFrom, transferTo, amount, fixedAccount, savingsAccount);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/recipient", method = RequestMethod.GET)
+    public List<Recipient> recipientList(Principal principal) {
+        return transactionService.findRecipientList(principal);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/recipient/save", method = RequestMethod.POST)
+    public ResponseEntity<?> recipientPost(@RequestParam("recipient") Recipient recipient, Principal principal) {
+
+        User user = userService.findByEmail(principal.getName());
+        recipient.setUser(user);
+
+        return ResponseEntity.ok(transactionService.saveRecipient(recipient));
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/toSomeoneElse", method = RequestMethod.GET)
+    public List<Recipient> toSomeoneElse(Principal principal) {
+        return transactionService.findRecipientList(principal);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/toSomeoneElse", method = RequestMethod.POST)
+    public ResponseEntity<?> toSomeoneElsePost(@RequestParam("recipientName") String recipientName,
+                                               @RequestParam("accountType") String accountType,
+                                               @RequestParam("amount") String amount, Principal principal) {
+        User user = userService.findByEmail(principal.getName());
+        Recipient recipient = transactionService.findRecipientByName(recipientName);
+        transactionService.toSomeoneElseTransfer(recipient, accountType, amount, user.getFixedAccount(), user.getSavingsAccount());
+
+        return ResponseEntity.ok().build();
     }
 }

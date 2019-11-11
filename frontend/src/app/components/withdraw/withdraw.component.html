@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Fixed Account</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+      background-color: coral;
+    }
+  </style>
+  <body>
+    <!-- Navbar -->
+    <div class="w3-top">
+      <div class="w3-bar w3-black w3-card">
+        <a
+          class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+          href="javascript:void(0)"
+          onclick="myFunction()"
+          title="Toggle Navigation Menu"
+          ><i class="fa fa-bars"></i
+        ></a>
+        <a
+          [routerLink]="['/useraccount']"
+          class="w3-bar-item w3-button w3-padding-large"
+          ><img src="/assets/images/logo.png" height="30" width="70" alt=""
+        /></a>
+        <div class="w3-dropdown-hover w3-hide-small">
+          <button class="w3-padding-large w3-button" title="More">
+            ACCOUNTS <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a [routerLink]="['/fixedAccount']" class="w3-bar-item w3-button"
+              >Fixed</a
+            >
+            <a [routerLink]="['/savingsAccount']" class="w3-bar-item w3-button"
+              >Savings</a
+            >
+          </div>
+        </div>
+        <div class="w3-dropdown-hover w3-hide-small">
+          <button class="w3-padding-large w3-button" title="More">
+            TRANSFER <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="#" class="w3-bar-item w3-button">To Another Account</a>
+            <a href="#" class="w3-bar-item w3-button">To Someone Else</a>
+          </div>
+        </div>
+        <a
+          (click)="logOut()"
+          class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right"
+          >LOGOUT</a
+        >
+      </div>
+    </div>
+
+    <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+    <div
+      id="navDemo"
+      class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top"
+      style="margin-top:46px"
+    >
+      <a
+        href="#band"
+        class="w3-bar-item w3-button w3-padding-large"
+        onclick="myFunction()"
+        >Fixed Account</a
+      >
+      <a
+        href="#tour"
+        class="w3-bar-item w3-button w3-padding-large"
+        onclick="myFunction()"
+        >Savings Account</a
+      >
+      <a
+        href="#tour"
+        class="w3-bar-item w3-button w3-padding-large"
+        onclick="myFunction()"
+        >Withdraw</a
+      >
+      <a
+        href="#tour"
+        class="w3-bar-item w3-button w3-padding-large"
+        onclick="myFunction()"
+        >Deposit</a
+      >
+      <a
+        href="#contact"
+        class="w3-bar-item w3-button w3-padding-large"
+        onclick="myFunction()"
+        >Transfer To Another Account</a
+      >
+      <a
+        href="#"
+        class="w3-bar-item w3-button w3-padding-large"
+        onclick="myFunction()"
+        >Transfer To Someone Else</a
+      >
+    </div>
+
+    <!-- Page content -->
+    <div class="w3-content" style="max-width:2000px;margin-top:46px">
+      <!-- The Band Section -->
+      <div
+        class="w3-container w3-content w3-center w3-padding-64"
+        style="max-width:800px"
+        id="band"
+      >
+        <div class="w3-row w3-padding-32">
+          <div class="w3-first">
+            <img
+              src="/assets/images/money.jpg"
+              class="w3-round"
+              alt="Random Name"
+              style="width:60%"
+            />
+          </div>
+        </div>
+      </div>
+      <form
+        name="form"
+        (ngSubmit)="f.form.valid && withdraw()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+        <div class="form-group">
+          <label
+            for="accoutType"
+            style="background-color: rgb(22, 158, 236); color: white;"
+            >1. Please select the account you would like to make a withdraw
+            to:</label
+          >
+          <select
+            [(ngModel)]="currentUser.accoutType"
+            #accoutType="ngModel"
+            name="accoutType"
+            id="accoutType"
+            class="form-control"
+          >
+            <option disabled="disabled" selected="selected"
+              >-- select the account --</option
+            >
+            <option value="Fixed">Fixed</option>
+            <option value="Savings">Savings</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label style="background-color: rgb(22, 158, 236); color: white;"
+            >2. Please specify the amount you would like to withdraw:
+          </label>
+          <input
+            type="text"
+            name="amount"
+            id="amount"
+            [(ngModel)]="currentUser.amount"
+            #amount="ngModel"
+            class="form-control"
+            aria-label="Amount (to the nearest rand"
+          />
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Withdraw
+        </button>
+      </form>
+      <!-- End Page Content -->
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge"
+    >
+      <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      <i class="fa fa-instagram w3-hover-opacity"></i>
+      <i class="fa fa-snapchat w3-hover-opacity"></i>
+      <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+      <i class="fa fa-twitter w3-hover-opacity"></i>
+      <i class="fa fa-linkedin w3-hover-opacity"></i>
+      <p class="w3-medium">
+        Develop by Sandiso Mpithi
+      </p>
+    </footer>
+
+    <script>
+      // Used to toggle the menu on small screens when clicking on the menu button
+      function myFunction() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else {
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      var modal = document.getElementById("ticketModal");
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      $(document).ready(function() {
+        $("#example").DataTable();
+      });
+    </script>
+  </body>
+</html>
