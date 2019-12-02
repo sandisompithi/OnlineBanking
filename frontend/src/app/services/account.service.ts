@@ -20,7 +20,7 @@ export class AccountService {
   }
 
   onSelectFixed() {
-    return this.http.get(AppComponent.apiUrl + "/api/fixedAccount");
+    return this.http.get(AppComponent.apiUrl + "/api/account/{accountId}");
   }
 
   onSelectSavings() {
@@ -51,7 +51,7 @@ export class AccountService {
     );
   }
 
-  depositToFixed(user: User) {
+  depositToFixed(user: Object): Observable<Object> {
     return this.http.post(AppComponent.apiUrl + "/api/deposit", user);
   }
 

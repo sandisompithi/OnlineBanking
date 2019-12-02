@@ -19,8 +19,8 @@ import { SavingsAccountComponent } from "./components/savings-account/savings-ac
 import { DepositComponent } from "./components/deposit/deposit.component";
 import { WithdrawComponent } from "./components/withdraw/withdraw.component";
 import { RecipientComponent } from "./components/recipient/recipient.component";
-import { from } from "rxjs";
-import { BetweenAccountsComponent } from './components/between-accounts/between-accounts.component';
+import { BetweenAccountsComponent } from "./components/between-accounts/between-accounts.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +34,8 @@ import { BetweenAccountsComponent } from './components/between-accounts/between-
     DepositComponent,
     WithdrawComponent,
     RecipientComponent,
-    BetweenAccountsComponent
+    BetweenAccountsComponent,
+    RecipientComponent
   ],
   imports: [BrowserModule, HttpModule, HttpClientModule, FormsModule, routing],
   providers: [AccountService, AuthService, UrlPermission],

@@ -1,6 +1,7 @@
 package com.sandiso.banking.system.controller;
 
 import com.sandiso.banking.system.model.*;
+import com.sandiso.banking.system.repository.FixedAccountRepository;
 import com.sandiso.banking.system.service.AccountService;
 import com.sandiso.banking.system.service.TransactionService;
 import com.sandiso.banking.system.service.UserService;
@@ -27,6 +28,9 @@ public class AccountController {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private FixedAccountRepository fixedAccountRepository;
 
     @Autowired
     private TransactionService transactionService;
@@ -57,22 +61,9 @@ public class AccountController {
         return userService.findUserList();
     }
 
-    @CrossOrigin
-    @RequestMapping(value = "/fixedAccount", method = RequestMethod.GET)
-    public ResponseEntity<FixedAccount> getFixedAccountById(@RequestBody Principal principal) {
-        User user = userService.findByEmail(principal.getName());
-        FixedAccount fixedAccount = user.getFixedAccount();
-
-        return ResponseEntity.ok().body(fixedAccount);
-    }
-
-    @CrossOrigin
-    @RequestMapping(value = "/savingsAccount", method = RequestMethod.GET)
-    public ResponseEntity<SavingsAccount> getSavingsAccountById(@RequestBody Principal principal) {
-        User user = userService.findByEmail(principal.getName());
-        SavingsAccount savingsAccount = user.getSavingsAccount();
-
-        return ResponseEntity.ok().body(savingsAccount);
+    @RequestMapping(value = "/account/{accountId}", method = RequestMethod.GET)
+    public FixedAccount accounts(@PathVariable Long accountId) {
+        return accountService.createFixedAccount();
     }
 
     @CrossOrigin
@@ -89,11 +80,10 @@ public class AccountController {
 
     @CrossOrigin
     @RequestMapping(value = "/deposit", method = RequestMethod.POST)
-    public ResponseEntity<?> depositPost(@RequestParam("amount") String amount,
-                                         @RequestParam("accountType") String accountType, Principal principal) {
+    public ResponseEntity<?> depositPost(@ModelAttribute("amount") String amount,
+                                         @ModelAttribute("accountType") String accountType, Principal principal) {
 
         accountService.deposit(accountType, Double.parseDouble(amount), principal);
-
         return ResponseEntity.ok().build();
     }
 
