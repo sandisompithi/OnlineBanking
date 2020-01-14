@@ -2,6 +2,7 @@ package com.sandiso.banking.system.controller;
 
 import com.sandiso.banking.system.model.*;
 import com.sandiso.banking.system.repository.FixedAccountRepository;
+import com.sandiso.banking.system.repository.SavingsAccountRepository;
 import com.sandiso.banking.system.service.AccountService;
 import com.sandiso.banking.system.service.TransactionService;
 import com.sandiso.banking.system.service.UserService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("api")
 @PreAuthorize("hasRole('USER')")
@@ -33,9 +35,11 @@ public class AccountController {
     private FixedAccountRepository fixedAccountRepository;
 
     @Autowired
+    private SavingsAccountRepository savingsAccountRepository;
+
+    @Autowired
     private TransactionService transactionService;
 
-    @CrossOrigin
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<?> createUser(@RequestBody User user) {
         User exist = userService.findByEmail(user.getEmail());
@@ -48,68 +52,25 @@ public class AccountController {
         return new ResponseEntity<User>(userService.save(user), HttpStatus.CREATED);
     }
 
-    @CrossOrigin
     @RequestMapping("/login")
     public Principal user(Principal principal){
         logger.info("user logged " + principal);
         return principal;
     }
 
-    @CrossOrigin
-    @RequestMapping(value = "/user/all", method = RequestMethod.GET)
-    public List<User> userList() {
-        return userService.findUserList();
-    }
-
-    @RequestMapping(value = "/account/{accountId}", method = RequestMethod.GET)
-    public FixedAccount accounts(@PathVariable Long accountId) {
-        return accountService.createFixedAccount();
-    }
-
-    @CrossOrigin
-    @RequestMapping(value = "/fixedTransaction", method = RequestMethod.GET)
-    public List<FixedTransaction> getFixedTransactionList(@RequestParam("username") String username) {
-        return transactionService.findFixedTransactionList(username);
-    }
-
-    @CrossOrigin
-    @RequestMapping(value = "/savingsTransaction", method = RequestMethod.GET)
-    public List<SavingsTransaction> getSavingsTransactionList(@RequestParam("username") String username) {
-        return transactionService.findSavingsTransactionList(username);
-    }
-
-    @CrossOrigin
     @RequestMapping(value = "/deposit", method = RequestMethod.POST)
-    public ResponseEntity<?> depositPost(@ModelAttribute("amount") String amount,
-                                         @ModelAttribute("accountType") String accountType, Principal principal) {
-
-        accountService.deposit(accountType, Double.parseDouble(amount), principal);
-        return ResponseEntity.ok().build();
+    public void deposit(@RequestBody Transactions transactions, Principal principal) {
+        accountService.deposit(transactions, principal);
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/withdraw", method = RequestMethod.POST)
-    public ResponseEntity<?> withdrawPost(@RequestParam("amount") String amount,
-                                         @RequestParam("accountType") String accountType, Principal principal) {
+    public String withdraw(@ModelAttribute("amount") String amount,
+                          @ModelAttribute("acountType") String acountType, Principal principal) {
+        accountService.withdraw(acountType, Double.parseDouble(amount), principal);
 
-        accountService.withdraw(accountType, Double.parseDouble(amount), principal);
-
-        return ResponseEntity.ok().build();
+        return "redirect:/useraccount";
     }
 
-    @CrossOrigin
-    @RequestMapping("/user/{username}/enable")
-    public void enableUser(@PathVariable("username") String username) {
-        userService.enableUser(username);
-    }
-
-    @CrossOrigin
-    @RequestMapping("/user/{username}/disable")
-    public void disableUser(@PathVariable("username") String username) {
-        userService.disableUser(username);
-    }
-
-    @CrossOrigin
     @RequestMapping(value = "/betweenAccounts", method = RequestMethod.POST)
     public ResponseEntity<?> betweenAccountsPost(@RequestParam("transferFrom") String tranferFrom,
                                                  @RequestParam("transferTo") String transferTo,
@@ -123,13 +84,11 @@ public class AccountController {
         return ResponseEntity.ok().build();
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/recipient", method = RequestMethod.GET)
     public List<Recipient> recipientList(Principal principal) {
         return transactionService.findRecipientList(principal);
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/recipient/save", method = RequestMethod.POST)
     public ResponseEntity<?> recipientPost(@RequestParam("recipient") Recipient recipient, Principal principal) {
 
@@ -139,13 +98,11 @@ public class AccountController {
         return ResponseEntity.ok(transactionService.saveRecipient(recipient));
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/toSomeoneElse", method = RequestMethod.GET)
     public List<Recipient> toSomeoneElse(Principal principal) {
         return transactionService.findRecipientList(principal);
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/toSomeoneElse", method = RequestMethod.POST)
     public ResponseEntity<?> toSomeoneElsePost(@RequestParam("recipientName") String recipientName,
                                                @RequestParam("accountType") String accountType,

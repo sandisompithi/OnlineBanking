@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AccountService } from "../../services/account.service";
-import { ActivatedRoute, Params } from "@angular/router";
+import { User } from "../../model/model.user";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 
 @Component({
   selector: "app-fixed-account",
@@ -8,28 +9,10 @@ import { ActivatedRoute, Params } from "@angular/router";
   styleUrls: ["./fixed-account.component.css"]
 })
 export class FixedAccountComponent implements OnInit {
-  username: string;
-  fixedTransactionList: Object[];
+  currentUser: User;
 
-  constructor(
-    private route: ActivatedRoute,
-    private accountService: AccountService
-  ) {
-    this.route.params.forEach((params: Params) => {
-      this.username = params["username"];
-    });
-  }
-
-  getFixedTransactionList() {
-    this.accountService.getFixedTransactionList(this.username).subscribe(
-      res => {
-        console.log(JSON.parse(JSON.stringify(res))._body);
-        this.fixedTransactionList = JSON.parse(
-          JSON.parse(JSON.stringify(res))._body
-        );
-      },
-      err => console.log(err)
-    );
+  constructor(public accountService: AccountService, public router: Router) {
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
   }
 
   ngOnInit() {}

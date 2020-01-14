@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AccountService } from "../../services/account.service";
-import { FixedAccount } from "../../model/model.fixed-account";
+import { User } from "../../model/model.user";
 import { Router } from "@angular/router";
 import { from } from "rxjs";
 
@@ -10,7 +10,7 @@ import { from } from "rxjs";
   styleUrls: ["./deposit.component.css"]
 })
 export class DepositComponent implements OnInit {
-  currentUser: FixedAccount;
+  currentUser: User;
   errorMessage: string;
 
   constructor(public accountService: AccountService, public router: Router) {
@@ -20,9 +20,10 @@ export class DepositComponent implements OnInit {
   ngOnInit() {}
 
   deposit() {
-    this.accountService.depositToFixed(this.currentUser).subscribe(
+    this.accountService.deposit(this.currentUser).subscribe(
       data => {
         this.currentUser = JSON.parse(JSON.parse(JSON.stringify(data))._body);
+        this.router.navigateByUrl("/useraccount");
       },
       err => {
         console.log(err);

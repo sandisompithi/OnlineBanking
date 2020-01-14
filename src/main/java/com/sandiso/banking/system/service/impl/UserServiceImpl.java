@@ -46,28 +46,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findUserList() {
-        return userRepository.findAll();
-    }
-
-    @Override
-    public void enableUser(String username) {
-        User user = findByEmail(username);
-        user.setEnabled(true);
-        userRepository.save(user);
-    }
-
-    @Override
-    public void disableUser(String username) {
-        User user = findByEmail(username);
-        user.setEnabled(false);
-        System.out.println(user.isEnabled());
-        userRepository.save(user);
-        System.out.println(username + " is disabled.");
-    }
-
-
-    @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         User user = userRepository.findByEmail(email);

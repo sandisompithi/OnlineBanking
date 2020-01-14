@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { User } from "../model/model.user";
 import { Http } from "@angular/http";
@@ -15,47 +15,19 @@ export class AccountService {
     return this.http.post(AppComponent.apiUrl + "/api/register", user);
   }
 
-  getUsers() {
-    return this.http.get(AppComponent.apiUrl + "/api/user/all");
+  deposit(user: User) {
+    const url = AppComponent.apiUrl + "/api/deposit";
+    const headers = new HttpHeaders({
+      Authorization: "Basic " + btoa(user.email + ":" + user.password)
+    });
+    return this.http.get(url + { headers });
   }
 
-  onSelectFixed() {
-    return this.http.get(AppComponent.apiUrl + "/api/account/{accountId}");
-  }
-
-  onSelectSavings() {
-    return this.http.get(AppComponent.apiUrl + "/api/savingsAccount");
-  }
-
-  getFixedTransactionList(username: string) {
-    return this.http.get(
-      AppComponent.apiUrl + "/api/fixedTransaction?username=" + username
-    );
-  }
-
-  getSavingsTransactionList(username: string) {
-    return this.http.get(
-      AppComponent.apiUrl + "/api/savingsTransaction?username=" + username
-    );
-  }
-
-  enableUser(username: string) {
-    return this.http.get(
-      AppComponent.apiUrl + "/api/user/" + username + "/enable"
-    );
-  }
-
-  disableUser(username: string) {
-    return this.http.get(
-      AppComponent.apiUrl + "/api/user/" + username + "/disable"
-    );
-  }
-
-  depositToFixed(user: Object): Observable<Object> {
-    return this.http.post(AppComponent.apiUrl + "/api/deposit", user);
-  }
-
-  withdrawFromFixedAccount(user: User) {
-    return this.http.post(AppComponent.apiUrl + "/api/withdraw", user);
+  withdraw(user: User) {
+    const url = AppComponent.apiUrl + "/api/withdraw";
+    const headers = new HttpHeaders({
+      Authorization: "Basic " + btoa(user.email + ":" + user.password)
+    });
+    return this.http.get(url + { headers });
   }
 }

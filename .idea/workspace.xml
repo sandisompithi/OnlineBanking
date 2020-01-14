@@ -2,20 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1448689c-a23d-4e7d-b467-b21d89afe014" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/deposit/deposit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/deposit/deposit.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/components/deposit/deposit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/deposit/deposit.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/fixed-account/fixed-account.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/fixed-account/fixed-account.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/recipient/recipient.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/recipient/recipient.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/fixed-account/fixed-account.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/fixed-account/fixed-account.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/components/useraccount/useraccount.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/useraccount/useraccount.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/model/model.fixed-account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/model/model.fixed-account.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/useraccount/useraccount.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/useraccount/useraccount.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/withdraw/withdraw.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/withdraw/withdraw.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/services/account.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/account.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/config/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/service/impl/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sandiso/banking/system/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/OnlineBankingApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/OnlineBankingApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/config/SecurityConfiguration$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/config/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/config/SecurityConfiguration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/controller/AccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/controller/AccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/FixedAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/FixedAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/FixedTransaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/FixedTransaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/Recipient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/Recipient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/SavingsAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/SavingsAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/SavingsTransaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/SavingsTransaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/FixedAccountRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/FixedAccountRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/FixedTransactionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/FixedTransactionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/RecipientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/RecipientRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/SavingsAccountRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/SavingsAccountRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/SavingsTransactionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/SavingsTransactionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/AccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/TransactionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/TransactionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/impl/AccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/impl/AccountServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/impl/TransactionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/impl/TransactionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sandiso/banking/system/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +76,11 @@
     <option name="LABEL_PART_2" value="&quot;/&gt;" />
   </component>
   <component name="ProjectId" id="1QgQDk9igTPvG0jbsgA0Swmhdik" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -70,31 +104,26 @@
       <recent name="com.sandiso.banking.system.repository" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
-    <configuration name="OnlineBankingApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="OnlineBankingApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sandiso.banking.system.OnlineBankingApplication" />
       <module name="OnlineBanking" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <item itemvalue="Application.OnlineBankingApplication" />
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
-    </recent_temporary>
+    </option>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -118,5 +147,39 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="254" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578382245759">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="254" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860@0.0.1600.860" timestamp="1578382245759" />
+    <state x="605" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1578989726351">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="605" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1578989726351" />
+    <state x="480" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576135516099">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="480" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1600.860@0.0.1600.860" timestamp="1576135516099" />
+    <state width="1557" height="217" key="GridCell.Tab.0.bottom" timestamp="1578993842561">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="217" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1578993842561" />
+    <state width="1557" height="217" key="GridCell.Tab.0.center" timestamp="1578993842560">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="217" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1578993842560" />
+    <state width="1557" height="217" key="GridCell.Tab.0.left" timestamp="1578993842560">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="217" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1578993842560" />
+    <state width="1557" height="217" key="GridCell.Tab.0.right" timestamp="1578993842560">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="217" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1578993842560" />
+    <state x="508" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1578994433221">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="508" y="257" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1578994433221" />
   </component>
 </project>

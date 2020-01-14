@@ -19,13 +19,14 @@ export class WithdrawComponent implements OnInit {
   ngOnInit() {}
 
   withdraw() {
-    this.accountService.withdrawFromFixedAccount(this.currentUser).subscribe(
+    this.accountService.withdraw(this.currentUser).subscribe(
       data => {
-        this.router.navigate(["/fixedAccount"]);
+        this.currentUser = JSON.parse(JSON.parse(JSON.stringify(data))._body);
+        this.router.navigateByUrl("/useraccount");
       },
       err => {
         console.log(err);
-        this.errorMessage = "Transaction could not be completed";
+        this.errorMessage = "Option selected doesn't match the transaction";
       }
     );
   }

@@ -9,10 +9,4 @@ public interface UserService extends UserDetailsService {
 
     User findByEmail(String email);
     User save(User user);
-
-    List<User> findUserList();
-
-    void enableUser(String username);
-
-    void disableUser(String username);
 }
