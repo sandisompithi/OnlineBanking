@@ -21,3 +21,4 @@ C:\spring_boot\OnlineBanking\src\main\java\com\sandiso\banking\system\model\Role
 C:\spring_boot\OnlineBanking\src\main\java\com\sandiso\banking\system\repository\SavingsAccountRepository.java
 C:\spring_boot\OnlineBanking\src\main\java\com\sandiso\banking\system\service\AccountService.java
 C:\spring_boot\OnlineBanking\src\main\java\com\sandiso\banking\system\controller\AccountController.java
+C:\spring_boot\OnlineBanking\src\main\java\com\sandiso\banking\system\model\Transactions.java

@@ -64,11 +64,28 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/withdraw", method = RequestMethod.POST)
-    public String withdraw(@ModelAttribute("amount") String amount,
-                          @ModelAttribute("acountType") String acountType, Principal principal) {
-        accountService.withdraw(acountType, Double.parseDouble(amount), principal);
+    public void withdraw(@RequestBody Transactions transactions, Principal principal) {
+        accountService.withdraw(transactions, principal);
+    }
 
-        return "redirect:/useraccount";
+    @RequestMapping(value = "/fixedAccount/{accountNumber}", method = RequestMethod.GET)
+    public FixedAccount getCreatedFixedAccount(@PathVariable(value = "accountNumber") int accountNumber) {
+        return fixedAccountRepository.findByAccountNumber(accountNumber);
+    }
+
+    @RequestMapping(value = "/savingsAccount/{accountNumber}", method = RequestMethod.GET)
+    public SavingsAccount getCreatedSavingsAccount(@PathVariable(value = "accountNumber") int accountNumber) {
+        return savingsAccountRepository.findByAccountNumber(accountNumber);
+    }
+
+    @RequestMapping(value = "/fixed/transaction", method = RequestMethod.GET)
+    public List<FixedTransaction> getFixedTransactionList(@RequestParam("username") String username) {
+        return transactionService.findFixedTransactionList(username);
+    }
+
+    @RequestMapping(value = "/savings/transaction", method = RequestMethod.GET)
+    public List<SavingsTransaction> getSavingsTransactionList(@RequestParam("username") String username) {
+        return transactionService.findSavingsTransactionList(username);
     }
 
     @RequestMapping(value = "/betweenAccounts", method = RequestMethod.POST)

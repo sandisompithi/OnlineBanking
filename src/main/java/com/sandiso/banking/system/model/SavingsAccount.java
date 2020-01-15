@@ -13,7 +13,7 @@ public class SavingsAccount {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int accountNumber;
-    private String accoutType;
+    private String accountType;
     private BigDecimal accountBalance;
 
     @OneToMany(mappedBy = "savingsAccount", cascade = CascadeType.ALL,
@@ -37,12 +37,12 @@ public class SavingsAccount {
         this.accountNumber = accountNumber;
     }
 
-    public String getAccoutType() {
-        return accoutType;
+    public String getAccountType() {
+        return accountType;
     }
 
-    public void setAccoutType(String accoutType) {
-        this.accoutType = accoutType;
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 
     public BigDecimal getAccountBalance() {
@@ -66,6 +66,7 @@ public class SavingsAccount {
         return "SavingsAccount{" +
                 "id=" + id +
                 ", accountNumber=" + accountNumber +
+                ", accountType='" + accountType + '\'' +
                 ", accountBalance=" + accountBalance +
                 ", savingsTransactionList=" + savingsTransactionList +
                 '}';

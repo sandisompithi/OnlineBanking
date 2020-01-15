@@ -56,7 +56,7 @@ public class AccountServiceImpl implements AccountService {
 
         if (transactions.getAccountType().equalsIgnoreCase("Fixed")) {
             FixedAccount fixedAccount = user.getFixedAccount();
-            fixedAccount.setAccoutType(transactions.getAccountType());
+            fixedAccount.setAccountType(transactions.getAccountType());
             fixedAccount.setAccountBalance(fixedAccount.getAccountBalance().add(new BigDecimal(transactions.getAmount())));
             fixedAccountRepository.save(fixedAccount);
 
@@ -66,48 +66,42 @@ public class AccountServiceImpl implements AccountService {
             transactionService.saveFixedDepositTransaction(fixedTransaction);
 
         } else if (transactions.getAccountType().equalsIgnoreCase("Savings")) {
-            SavingsAccount userSavingsAccount = user.getSavingsAccount();
-            userSavingsAccount.setAccoutType(transactions.getAccountType());
-            userSavingsAccount.setAccountBalance(userSavingsAccount.getAccountBalance().add(new BigDecimal(transactions.getAmount())));
-            savingsAccountRepository.save(userSavingsAccount);
+            SavingsAccount savingsAccount = user.getSavingsAccount();
+            savingsAccount.setAccountType(transactions.getAccountType());
+            savingsAccount.setAccountBalance(savingsAccount.getAccountBalance().add(new BigDecimal(transactions.getAmount())));
+            savingsAccountRepository.save(savingsAccount);
 
             Date date = new Date();
 
-            SavingsTransaction savingsTransaction = new SavingsTransaction();
-
-            savingsTransaction.setDate(date);
-            savingsTransaction.setReference("Deposit to savings account");
-            savingsTransaction.setTransactionType("Account");
-            savingsTransaction.setStatus("Successful");
-            savingsTransaction.setAmount(transactions.getAmount());
-            savingsTransaction.setAvailableBalance(userSavingsAccount.getAccountBalance());
-            savingsTransaction.setSavingsAccount(userSavingsAccount);
+            SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Deposit to savings account","Deposit","Successful", transactions.getAmount(), savingsAccount.getAccountBalance(), savingsAccount);
             transactionService.saveSavingsDepositTransaction(savingsTransaction);
         }
     }
 
     @Override
-    public void withdraw(String accountType, double amount, Principal principal) {
+    public void withdraw(Transactions transactions, Principal principal) {
         User user = userService.findByEmail(principal.getName());
 
-        if (accountType.equalsIgnoreCase("Fixed")){
+        if (transactions.getAccountType().equalsIgnoreCase("Fixed")){
             FixedAccount fixedAccount = user.getFixedAccount();
-            fixedAccount.setAccountBalance(fixedAccount.getAccountBalance().subtract(new BigDecimal(amount)));
+            fixedAccount.setAccountType(transactions.getAccountType());
+            fixedAccount.setAccountBalance(fixedAccount.getAccountBalance().subtract(new BigDecimal(transactions.getAmount())));
             fixedAccountRepository.save(fixedAccount);
 
             Date date = new Date();
 
-            FixedTransaction fixedTransaction = new FixedTransaction(date, "Withdrawal from fixed account","Account","Successful", amount, fixedAccount.getAccountBalance(), fixedAccount);
+            FixedTransaction fixedTransaction = new FixedTransaction(date, "Withdrawal from fixed account","Withdrawal","Successful", transactions.getAmount(), fixedAccount.getAccountBalance(), fixedAccount);
             transactionService.saveFixedWithdrawTransaction(fixedTransaction);
 
-        } else if (accountType.equalsIgnoreCase("Savings")){
+        } else if (transactions.getAccountType().equalsIgnoreCase("Savings")){
             SavingsAccount savingsAccount = user.getSavingsAccount();
-            savingsAccount.setAccountBalance(savingsAccount.getAccountBalance().subtract(new BigDecimal(amount)));
+            savingsAccount.setAccountType(transactions.getAccountType());
+            savingsAccount.setAccountBalance(savingsAccount.getAccountBalance().subtract(new BigDecimal(transactions.getAmount())));
             savingsAccountRepository.save(savingsAccount);
 
             Date date = new Date();
 
-            SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Withdrawal from savings account","Account","Successful", amount, savingsAccount.getAccountBalance(), savingsAccount);
+            SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Withdrawal from savings account","Withdrawal","Successful", transactions.getAmount(), savingsAccount.getAccountBalance(), savingsAccount);
             transactionService.saveSavingsWithdrawTransaction(savingsTransaction);
         }
     }
