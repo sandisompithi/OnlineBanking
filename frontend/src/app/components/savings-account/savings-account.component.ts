@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-savings-account',
-  templateUrl: './savings-account.component.html',
-  styleUrls: ['./savings-account.component.css']
+  selector: "app-savings-account",
+  templateUrl: "./savings-account.component.html",
+  styleUrls: ["./savings-account.component.css"]
 })
 export class SavingsAccountComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

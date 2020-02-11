@@ -12,6 +12,7 @@ import { RecipientComponent } from "./components/recipient/recipient.component";
 import { DepositComponent } from "./components/deposit/deposit.component";
 import { WithdrawComponent } from "./components/withdraw/withdraw.component";
 import { BetweenAccountsComponent } from "./components/between-accounts/between-accounts.component";
+import { FixedTransactionComponent } from "./components/fixed-transaction/fixed-transaction.component";
 
 const appRoutes: Routes = [
   {
@@ -62,6 +63,10 @@ const appRoutes: Routes = [
   {
     path: "withdraw",
     component: WithdrawComponent
+  },
+  {
+    path: "fixedTransaction",
+    component: FixedTransactionComponent
   },
   // otherwise redirect to profile
   {

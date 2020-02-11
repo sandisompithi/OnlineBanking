@@ -99,18 +99,4 @@ public class SavingsTransaction {
     public void setSavingsAccount(SavingsAccount savingsAccount) {
         this.savingsAccount = savingsAccount;
     }
-
-    @Override
-    public String toString() {
-        return "SavingsTransaction{" +
-                "id=" + id +
-                ", date=" + date +
-                ", reference='" + reference + '\'' +
-                ", transactionType='" + transactionType + '\'' +
-                ", status='" + status + '\'' +
-                ", amount=" + amount +
-                ", availableBalance=" + availableBalance +
-                ", savingsAccount=" + savingsAccount +
-                '}';
-    }
 }

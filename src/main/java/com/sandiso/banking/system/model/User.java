@@ -1,78 +1,144 @@
 package com.sandiso.banking.system.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class User {
+@Table(name = "User")
+@Scope("session")
+public class User implements UserDetails {
+
+    public static enum Role { USER }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String firstName;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id ;
+    /**
+     * Description of the property email.
+     */
+    @Column(unique = true)
+    private String username ;
+    /**
+     * Description of the property password.
+     */
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password ;
+
+    private String  role;
+    /**
+     * Description of the property full name.
+     */
+    private String fullName;
     private String surname;
-    private String email;
     private String cellphone;
 
     @OneToOne
     private FixedAccount fixedAccount;
-
     @OneToOne
     private SavingsAccount savingsAccount;
-    private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+    public User() {
+    }
 
-    private boolean enabled = true;
-
-    public User() {}
-
-    public User(String firstName, String surname, String email, String cellphone,
-                FixedAccount fixedAccount, SavingsAccount savingsAccount, String password) {
-        this.firstName = firstName;
+    public User(String username, String password, String fullName, String surname,
+                String cellphone, FixedAccount fixedAccount, SavingsAccount savingsAccount) {
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
         this.surname = surname;
-        this.email = email;
         this.cellphone = cellphone;
         this.fixedAccount = fixedAccount;
         this.savingsAccount = savingsAccount;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role));
+        return authorities;
+
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", cellphone='" + cellphone + '\'' +
+                ", fixedAccount=" + fixedAccount +
+                ", savingsAccount=" + savingsAccount +
+                '}';
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public User(String firstName, String surname, String email, String cellphone,
-                FixedAccount fixedAccount, SavingsAccount savingsAccount, String password,
-                Collection<Role> roles) {
-        this.firstName = firstName;
-        this.surname = surname;
-        this.email = email;
-        this.cellphone = cellphone;
-        this.fixedAccount = fixedAccount;
-        this.savingsAccount = savingsAccount;
-        this.password = password;
-        this.roles = roles;
+    public String getFullName() {
+        return fullName;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getSurname() {
@@ -81,14 +147,6 @@ public class User {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getCellphone() {
@@ -115,42 +173,7 @@ public class User {
         this.savingsAccount = savingsAccount;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", cellphone='" + cellphone + '\'' +
-                ", fixedAccount=" + fixedAccount +
-                ", savingsAccount=" + savingsAccount +
-                ", password='" + password + '\'' +
-                ", roles=" + roles +
-                '}';
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public Long getId() {
+        return id;
     }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AccountService } from "../../services/account.service";
 import { User } from "../../model/model.user";
 import { Router } from "@angular/router";
-import { from } from "rxjs";
+import { Transaction } from "../../model/transaction";
 
 @Component({
   selector: "app-deposit",
@@ -12,6 +12,7 @@ import { from } from "rxjs";
 export class DepositComponent implements OnInit {
   currentUser: User;
   errorMessage: string;
+  transaction: Transaction;
 
   constructor(public accountService: AccountService, public router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem("currentUser"));

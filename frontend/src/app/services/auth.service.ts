@@ -22,7 +22,7 @@ export class AuthService {
       credentials
         ? {
             authorization:
-              "Basic " + btoa(credentials.email + ":" + credentials.password)
+              "Basic " + btoa(credentials.username + ":" + credentials.password)
           }
         : {}
     );
@@ -33,7 +33,7 @@ export class AuthService {
         let data: any;
         data = response;
         const u = data.principal;
-        if (response["firstName"] || response["surname"]) {
+        if (response["fullName"]) {
           this.authenticated = true;
         } else {
           this.authenticated = false;
@@ -44,10 +44,9 @@ export class AuthService {
   public logIn(user: User) {
     console.log(user);
     let headers = new HttpHeaders();
-    headers.set("Accept", "application/json");
 
     // creating base64 encoded String from user name and password
-    const base64Credential: string = btoa(user.email + ":" + user.password);
+    const base64Credential: string = btoa(user.username + ":" + user.password);
     headers.set("Authorization", "Basic " + base64Credential);
     console.log(headers);
 

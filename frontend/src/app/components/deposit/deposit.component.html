@@ -146,7 +146,7 @@
             to:</label
           >
           <select
-            [(ngModel)]="currentUser.accountType"
+            [(ngModel)]="transaction.accountType"
             #accountType="ngModel"
             name="accountType"
             id="accountType"
@@ -165,7 +165,7 @@
             type="text"
             name="amount"
             id="amount"
-            [(ngModel)]="currentUser.amount"
+            [(ngModel)]="transaction.amount"
             #amount="ngModel"
             class="form-control"
             aria-label="Amount (to the nearest rand"

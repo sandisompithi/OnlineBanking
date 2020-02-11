@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { AccountService } from "../../services/account.service";
 import { User } from "../../model/model.user";
+import { FixedTransaction } from "../../model/fixed-transaction";
 import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-fixed-account",

@@ -136,7 +136,7 @@
             <hr />
             <h2>Fixed Account</h2>
             <h1>
-              <span>R 0.00</span>
+              <span>R {{ currentUser.fixedAccount.accountBalance }}</span>
             </h1>
           </div>
           <div class="w3-third">
@@ -172,13 +172,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let fixedTransaction of fixedTransactionList">
-            <td>{{ fixedTransaction.date | date: "MM/dd/yyyy" }}</td>
-            <td>{{ fixedTransaction.reference }}</td>
-            <td>{{ fixedTransaction.transactionType }}</td>
-            <td>{{ fixedTransaction.status }}</td>
-            <td>{{ fixedTransaction.amount }}</td>
-            <td>{{ fixedTransaction.availableBalance }}</td>
+          <tr *ngFor="let transaction of transactions | async">
+            <td>{{ transaction.date | date: "MM/dd/yyyy" }}</td>
+            <td>{{ transaction.reference }}</td>
+            <td>{{ transaction.transactionType }}</td>
+            <td>{{ transaction.status }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.availableBalance }}</td>
           </tr>
         </tbody>
       </table>

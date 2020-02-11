@@ -20,6 +20,7 @@ import { DepositComponent } from "./components/deposit/deposit.component";
 import { WithdrawComponent } from "./components/withdraw/withdraw.component";
 import { RecipientComponent } from "./components/recipient/recipient.component";
 import { BetweenAccountsComponent } from "./components/between-accounts/between-accounts.component";
+import { FixedTransactionComponent } from './components/fixed-transaction/fixed-transaction.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BetweenAccountsComponent } from "./components/between-accounts/between-
     WithdrawComponent,
     RecipientComponent,
     BetweenAccountsComponent,
-    RecipientComponent
+    RecipientComponent,
+    FixedTransactionComponent
   ],
   imports: [BrowserModule, HttpModule, HttpClientModule, FormsModule, routing],
   providers: [AccountService, AuthService, UrlPermission],

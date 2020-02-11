@@ -60,15 +60,4 @@ public class FixedAccount {
     public void setFixedTransactionList(List<FixedTransaction> fixedTransactionList) {
         this.fixedTransactionList = fixedTransactionList;
     }
-
-    @Override
-    public String toString() {
-        return "FixedAccount{" +
-                "id=" + id +
-                ", accountNumber=" + accountNumber +
-                ", accountType='" + accountType + '\'' +
-                ", accountBalance=" + accountBalance +
-                ", fixedTransactionList=" + fixedTransactionList +
-                '}';
-    }
 }

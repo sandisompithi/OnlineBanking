@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 public class SavingsAccount {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -17,7 +18,7 @@ public class SavingsAccount {
     private BigDecimal accountBalance;
 
     @OneToMany(mappedBy = "savingsAccount", cascade = CascadeType.ALL,
-                fetch = FetchType.LAZY)
+            fetch = FetchType.LAZY)
     @JsonIgnore
     private List<SavingsTransaction> savingsTransactionList;
 
@@ -59,16 +60,5 @@ public class SavingsAccount {
 
     public void setSavingsTransactionList(List<SavingsTransaction> savingsTransactionList) {
         this.savingsTransactionList = savingsTransactionList;
-    }
-
-    @Override
-    public String toString() {
-        return "SavingsAccount{" +
-                "id=" + id +
-                ", accountNumber=" + accountNumber +
-                ", accountType='" + accountType + '\'' +
-                ", accountBalance=" + accountBalance +
-                ", savingsTransactionList=" + savingsTransactionList +
-                '}';
     }
 }

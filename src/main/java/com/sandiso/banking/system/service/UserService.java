@@ -1,12 +1,14 @@
 package com.sandiso.banking.system.service;
 
 import com.sandiso.banking.system.model.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.List;
+import java.util.Optional;
 
-public interface UserService extends UserDetailsService {
-
-    User findByEmail(String email);
+public interface UserService {
     User save(User user);
+    User update(User user);
+
+    User findByEmail(String username);
+
+    Optional<User> find(Long id);
 }
